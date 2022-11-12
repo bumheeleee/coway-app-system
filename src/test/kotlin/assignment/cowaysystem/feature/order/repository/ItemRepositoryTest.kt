@@ -31,7 +31,7 @@ internal class ItemRepositoryTest {
 
     @Test
     @Transactional
-    fun searchTest() {
+    fun searchRepositoryTest() {
         // given
         var category1 = Category().also {
             it.name = "비데"
@@ -73,6 +73,7 @@ internal class ItemRepositoryTest {
         val bidetA = itemRepository.search(pageRequest,"a123")
         val bidetB = itemRepository.search(pageRequest,"b123")
         val bidets = itemRepository.search(pageRequest,"비데")
+        val noItem = itemRepository.search(pageRequest, null)
 
         // then
         assertEquals(bidetA.totalElements, 1)
@@ -81,9 +82,59 @@ internal class ItemRepositoryTest {
 
         assertEquals(bidetA.content[0].name, "a123")
         assertEquals(bidetB.content[0].name, "b123")
+        assertEquals(noItem.content.size, 0)
+        println("=============")
+        println(noItem.content)
+        println("=============")
+        noItem.forEach {
+            println(it)
+        }
+
         bidets.forEach {
             println(it.name)
         }
+    }
+    @Test
+    fun findByNameTest() {
+        // given
+        var category1 = Category().also {
+            it.name = "비데"
+        }
+        var category2 = Category().also {
+            it.name = "매트리스"
+        }
+        var category3 = Category().also {
+            it.name = "정수기"
+        }
+        var category4 = Category().also {
+            it.name = "공기청정기"
+        }
+        categoryRepository.save(category1)
+        categoryRepository.save(category2)
+        categoryRepository.save(category3)
+        categoryRepository.save(category4)
 
+
+        var bidet = Bidet().also {
+            it.name = "a123"
+            it.category = category1
+        }
+        var bidet2 = Bidet().also {
+            it.name = "b123"
+            it.category = category1
+        }
+        var airCleaner1 = AirCleaner().also {
+            it.name = "air123"
+            it.category = category4
+        }
+        itemRepository.save(bidet)
+        itemRepository.save(bidet2)
+        itemRepository.save(airCleaner1)
+
+        // when
+        val findItem = itemService.findItem("a123")
+
+        // then
+        assertEquals(findItem.name, "a123")
     }
 }
