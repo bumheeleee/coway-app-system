@@ -31,6 +31,9 @@ class ItemService(
         return itemRepository.findByName(name)?: throw BadRequestException("해당 ${name}을 찾을 수 없습니다.")
     }
 
+    /**
+     * 메인 검색
+     */
     fun search(
             searchKeyword: String?
     ): Page<Item>{
@@ -42,4 +45,20 @@ class ItemService(
             return searchItem
         }
     }
+
+    /**
+     * 카테고리 검색
+     */
+    fun searchCategory(
+            categoryName: String?
+    ): Page<Item>{
+        val pageable = PageableDto("name")
+        val items = itemRepository.searchCategory(pageable.toPageable(), categoryName)
+        if (items.isEmpty){
+            throw BadRequestException("해당 ${categoryName}을 찾을 수 없습니다.")
+        }else{
+            return items
+        }
+    }
+
 }

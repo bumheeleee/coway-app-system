@@ -24,4 +24,18 @@ interface ItemRepository: JpaRepository<Item, Long> {
             pageable: Pageable,
             @Param("searchKeyword") searchKeyword: String? = null
     ): Page<Item>
+
+    @Query(
+            """
+                select i
+                from Item i
+                where (
+                    i.category.name = :category
+                )
+            """
+    )
+    fun searchCategory(
+            pageable: Pageable,
+            @Param("category") category: String? = null
+    ): Page<Item>
 }
