@@ -22,6 +22,4 @@ class OrderItem {
     var orderPrice: Int = 0
 
     var count: Int = 0
-
-    var color: String? = null
 }

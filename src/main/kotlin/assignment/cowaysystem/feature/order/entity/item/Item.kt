@@ -24,6 +24,8 @@ abstract class Item {
 
     var stockQuantity: Int = 0
 
+    var color: String? = null
+
     //==비즈니스 로직==//
     /**
      * stock 증가
