@@ -1,6 +1,5 @@
 package assignment.cowaysystem.feature.order.entity.item
 
-import assignment.cowaysystem.common.exception.BadRequestException
 import assignment.cowaysystem.common.exception.NotEnoughStockException
 import assignment.cowaysystem.feature.order.entity.Category
 import javax.persistence.*
@@ -25,6 +24,9 @@ abstract class Item {
     var stockQuantity: Int = 0
 
     var color: String? = null
+
+    //주기적 방문 서비스 이용 여부
+    var serviceYn: String? = null
 
     //==비즈니스 로직==//
     /**
