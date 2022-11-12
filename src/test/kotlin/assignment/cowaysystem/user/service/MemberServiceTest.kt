@@ -1,7 +1,7 @@
 package assignment.cowaysystem.user.service
 
-import assignment.cowaysystem.feature.user.dto.MemberFormDto
-import assignment.cowaysystem.feature.user.service.MemberService
+import assignment.cowaysystem.feature.order.dto.MemberFormDto
+import assignment.cowaysystem.feature.order.service.MemberService
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

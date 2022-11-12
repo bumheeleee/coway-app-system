@@ -1,8 +1,8 @@
-package assignment.cowaysystem.feature.user.service
+package assignment.cowaysystem.feature.order.service
 
 import assignment.cowaysystem.common.exception.BadRequestException
-import assignment.cowaysystem.feature.user.entity.Member
-import assignment.cowaysystem.feature.user.repository.MemberRepository
+import assignment.cowaysystem.feature.order.entity.Member
+import assignment.cowaysystem.feature.order.repository.MemberRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

@@ -1,4 +1,4 @@
-package assignment.cowaysystem.feature.user.entity
+package assignment.cowaysystem.feature.order.entity
 
 import javax.persistence.*
 
@@ -18,6 +18,4 @@ class Member{
     var password: String? = null
 
     var address: String? = null
-
-    var memberRole: MemberRole? = null
 }

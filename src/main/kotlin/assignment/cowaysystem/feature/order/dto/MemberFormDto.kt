@@ -1,6 +1,6 @@
-package assignment.cowaysystem.feature.user.dto
+package assignment.cowaysystem.feature.order.dto
 
-import assignment.cowaysystem.feature.user.entity.Member
+import assignment.cowaysystem.feature.order.entity.Member
 import org.jetbrains.annotations.NotNull
 import org.springframework.security.crypto.password.PasswordEncoder
 import javax.validation.constraints.Pattern

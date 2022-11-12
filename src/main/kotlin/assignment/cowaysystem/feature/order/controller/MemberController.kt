@@ -1,8 +1,8 @@
-package assignment.cowaysystem.feature.user.controller
+package assignment.cowaysystem.feature.order.controller
 
 import assignment.cowaysystem.common.util.throwIfHasErrors
-import assignment.cowaysystem.feature.user.dto.MemberFormDto
-import assignment.cowaysystem.feature.user.service.MemberService
+import assignment.cowaysystem.feature.order.dto.MemberFormDto
+import assignment.cowaysystem.feature.order.service.MemberService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
