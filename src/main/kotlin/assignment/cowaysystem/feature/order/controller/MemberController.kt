@@ -22,7 +22,6 @@ class MemberController(
         private val memberService: MemberService,
         private val passwordEncoder: PasswordEncoder
 ){
-
     @ApiOperation("회원생성")
     @PostMapping( "/new")
     fun save(
