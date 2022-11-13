@@ -2,7 +2,7 @@ package assignment.cowaysystem.feature.order.dto
 
 import assignment.cowaysystem.feature.order.entity.Category
 
-class SaveCategoryReq(
+class CategoryReq(
         val name: String
 ){
     fun toCategory(): Category{

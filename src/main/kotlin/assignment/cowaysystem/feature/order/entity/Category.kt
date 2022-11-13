@@ -1,10 +1,8 @@
 package assignment.cowaysystem.feature.order.entity
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import assignment.cowaysystem.feature.order.entity.item.Item
+import com.fasterxml.jackson.annotation.JsonIgnore
+import javax.persistence.*
 
 @Entity
 @Table(name = "CATEGORY")
@@ -15,4 +13,8 @@ class Category {
     var id: Long = 0
 
     var name: String? = null
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL])
+    val items: List<Item> = mutableListOf()
 }

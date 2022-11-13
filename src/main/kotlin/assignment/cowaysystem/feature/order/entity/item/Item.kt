@@ -2,6 +2,7 @@ package assignment.cowaysystem.feature.order.entity.item
 
 import assignment.cowaysystem.common.exception.NotEnoughStockException
 import assignment.cowaysystem.feature.order.entity.Category
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
@@ -13,6 +14,7 @@ abstract class Item {
     @Column(name = "item_id")
     var id: Long? = null
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     var category: Category? = null
