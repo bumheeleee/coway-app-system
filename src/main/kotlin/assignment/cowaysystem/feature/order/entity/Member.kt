@@ -9,7 +9,9 @@ class Member: BaseTimeEntity() {
     @Id
     @GeneratedValue
     @Column(name = "member_id")
-    var uid: Long = 0
+    var id: Long = 0
+
+    var userId: String? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "authority_id")
