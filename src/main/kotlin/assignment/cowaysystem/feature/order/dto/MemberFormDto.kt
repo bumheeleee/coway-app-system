@@ -1,5 +1,6 @@
 package assignment.cowaysystem.feature.order.dto
 
+import assignment.cowaysystem.feature.order.entity.Address
 import assignment.cowaysystem.feature.order.entity.Member
 import org.jetbrains.annotations.NotNull
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -17,7 +18,7 @@ class MemberFormDto(
         val password: String? = null,
 
         @field:NotNull("주소는 필수 입력 값입니다.")
-        val address: String? = null
+        val address: Address? = null
 ){
         fun toEntity(passwordEncoder: PasswordEncoder): Member {
                 return Member().also {

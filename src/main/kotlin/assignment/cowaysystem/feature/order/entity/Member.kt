@@ -24,5 +24,6 @@ class Member: BaseTimeEntity() {
 
     var password: String? = null
 
-    var address: String? = null
+    @Embedded
+    var address: Address? = null
 }
