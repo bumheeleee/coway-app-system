@@ -2,6 +2,7 @@ package assignment.cowaysystem.feature.order.service
 
 import assignment.cowaysystem.common.dto.PageableDto
 import assignment.cowaysystem.common.exception.BadRequestException
+import assignment.cowaysystem.common.exception.NotFoundException
 import assignment.cowaysystem.feature.order.entity.item.Item
 import assignment.cowaysystem.feature.order.repository.ItemRepository
 import org.springframework.data.domain.Page
@@ -35,12 +36,12 @@ class ItemService(
      * 메인 검색
      */
     fun search(
-            searchKeyword: String?
+            searchKeyword: String
     ): Page<Item>{
         val pageable = PageableDto("name")
         val searchItem = itemRepository.search(pageable.toPageable(), searchKeyword)
         if (searchItem.isEmpty){
-            throw BadRequestException("해당 ${searchKeyword}을 찾을 수 없습니다.")
+            throw NotFoundException("해당 ${searchKeyword}을 찾을 수 없습니다.")
         }else{
             return searchItem
         }
