@@ -1,6 +1,7 @@
 package assignment.cowaysystem.feature.order.service
 
 import assignment.cowaysystem.common.exception.BadRequestException
+import assignment.cowaysystem.common.exception.NotFoundException
 import assignment.cowaysystem.feature.order.dto.OrderList
 import assignment.cowaysystem.feature.order.dto.OrderReq
 import assignment.cowaysystem.feature.order.entity.Delivery
@@ -9,6 +10,7 @@ import assignment.cowaysystem.feature.order.entity.OrderItem
 import assignment.cowaysystem.feature.order.repository.ItemRepository
 import assignment.cowaysystem.feature.order.repository.MemberRepository
 import assignment.cowaysystem.feature.order.repository.OrderRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -78,6 +80,24 @@ class OrderService(
         )
 
         return orderRepository.save(createdOrder)
+    }
+
+    /**
+     * 주문 취소
+     */
+    @Transactional
+    fun cancelOrder(orderId: Long?){
+        val findOrder = orderRepository.findByIdOrNull(orderId)?: throw NotFoundException("${orderId}를 찾을수 없습니다.")
+        findOrder.cancel()
+    }
+
+    /**
+     * 특정 회원이 주문한 모든 내용을 보여줌
+     */
+    fun findOrders(loginId: String): List<Order>{
+        val orders = orderRepository.findOrderByLoginId(loginId)
+        if (orders.isEmpty()) throw NotFoundException("${loginId}를 찾을수 없습니다.")
+        return orders
     }
 
 }
