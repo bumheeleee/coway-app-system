@@ -8,7 +8,8 @@ class SaveItemReq(
         var price: Int,
         var category: String,
         var stockQuantity: Int,
-        var dtype: String
+        var dtype: String,
+        var color: String
 ) {
     fun toItem(categoryRepository: CategoryRepository): Item?{
         when (dtype) {
@@ -18,6 +19,7 @@ class SaveItemReq(
                     it.price = price
                     it.category = categoryRepository.findByName(category)
                     it.stockQuantity = stockQuantity
+                    it.color = color
                 }
             }
             ("AirCleaner") -> {
@@ -26,6 +28,7 @@ class SaveItemReq(
                     it.price = price
                     it.category = categoryRepository.findByName(category)
                     it.stockQuantity = stockQuantity
+                    it.color = color
                 }
             }
             ("Mattress") -> {
@@ -34,6 +37,7 @@ class SaveItemReq(
                     it.price = price
                     it.category = categoryRepository.findByName(category)
                     it.stockQuantity = stockQuantity
+                    it.color = color
                 }
             }
             ("WaterPurifier") -> {
@@ -42,6 +46,7 @@ class SaveItemReq(
                     it.price = price
                     it.category = categoryRepository.findByName(category)
                     it.stockQuantity = stockQuantity
+                    it.color = color
                 }
             }
             else -> {
