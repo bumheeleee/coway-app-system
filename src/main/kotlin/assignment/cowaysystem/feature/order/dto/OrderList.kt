@@ -1,7 +1,9 @@
 package assignment.cowaysystem.feature.order.dto
 
-class OrderReq(
-        val itemName: String,
+import assignment.cowaysystem.feature.order.entity.item.Item
+
+class OrderList(
+        val item: Item,
         val count: Int,
         val color: String
 ){

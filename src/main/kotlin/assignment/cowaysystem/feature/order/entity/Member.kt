@@ -11,7 +11,7 @@ class Member: BaseTimeEntity() {
     @Column(name = "member_id")
     var id: Long = 0
 
-    var memberId: String? = null
+    var loginId: String? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "authority_id")

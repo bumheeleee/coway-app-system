@@ -1,6 +1,7 @@
 package assignment.cowaysystem.user.service
 
 import assignment.cowaysystem.feature.order.dto.MemberFormDto
+import assignment.cowaysystem.feature.order.entity.Address
 import assignment.cowaysystem.feature.order.service.MemberService
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -25,7 +26,8 @@ internal class MemberServiceTest{
     @Rollback(value = false)
     fun saveTest() {
         // given
-        val memberFormDto = MemberFormDto("lee", "email", "password", "inCheon")
+        val address = Address("incheon", "senhak", "12341")
+        val memberFormDto = MemberFormDto("lee123","lee", "email", "password", address)
 
         // when
         val savedMember = memberService.save(memberFormDto.toEntity(passwordEncoder))

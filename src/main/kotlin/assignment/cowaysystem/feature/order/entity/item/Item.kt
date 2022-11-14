@@ -30,7 +30,6 @@ abstract class Item {
     //주기적 방문 서비스 이용 여부
     var serviceYn: String? = null
 
-    //==비즈니스 로직==//
     /**
      * stock 증가
      */

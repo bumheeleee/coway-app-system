@@ -28,10 +28,10 @@ class OrderItem {
     /**
      * orderItem 생성
      */
-    fun createOrderItem(item: Item, orderPrice: Int, count: Int, color: String): OrderItem? {
+    fun createOrderItem(item: Item, count: Int, color: String): OrderItem{
         val orderItem = OrderItem().also {
             it.item = item
-            it.orderPrice = orderPrice
+            it.orderPrice = item.price
             it.count = count
             it.color = color
         }
@@ -40,7 +40,7 @@ class OrderItem {
     }
 
     /**
-     * 주문 취소
+     * 주문 상품 취소
      */
     fun cancel() {
         this.item?.addStock(count)
