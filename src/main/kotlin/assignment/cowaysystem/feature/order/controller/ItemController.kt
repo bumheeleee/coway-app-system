@@ -35,7 +35,7 @@ class ItemController(
     @ApiOperation("상품 검색", notes = "메인 페이지에서 상품검색(이름, 카테고리)")
     @GetMapping("/{searchKeyword}")
     fun searchItem(
-            @PathVariable("searchKeyword") searchKeyword: String?
+            @PathVariable("searchKeyword") searchKeyword: String
     ): Page<SearchItemRes> {
         return itemService.search(searchKeyword).map {
             SearchItemRes(it)
