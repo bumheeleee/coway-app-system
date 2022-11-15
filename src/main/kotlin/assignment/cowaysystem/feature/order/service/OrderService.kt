@@ -26,7 +26,7 @@ class OrderService(
      * 주문 기능
      * 1. 주문한 아이템이 리스트 형식으로 가능하게 하기 (o)
      * 2. 주문한 상품에 대해 주기적 방문 서비스 이용 여부 확인하는 코드 작성 필요
-     * 3. 상품 주문시 color 일치하여 주문하는 코드 추가하기
+     * 3. 상품 주문시 color 일치하여 주문하는 코드 추가하기 (o)
      */
     @Transactional
     fun order(
@@ -44,7 +44,8 @@ class OrderService(
          */
         val orderList = orderReq.map {
             OrderList(
-                    itemRepository.findByName(it.itemName)?: throw BadRequestException("주문하려는 ${it.itemName}가 존재하지 않습니다."),
+                    itemRepository.findByNameAndColor(it.itemName, it.color)
+                            ?: throw BadRequestException("주문하려는 ${it.itemName}, ${it.color} 가 존재하지 않습니다."),
                     it.count,
                     it.color
             )
