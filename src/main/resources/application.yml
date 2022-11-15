@@ -9,7 +9,7 @@ spring:
       matching-strategy: ant_path_matcher
   jpa:
     hibernate:
-      #ddl-auto: create
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true
