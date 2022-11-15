@@ -137,4 +137,56 @@ internal class ItemRepositoryTest {
         // then
         assertEquals(findItem.name, "a123")
     }
+
+    @Test
+    fun findByNameAndColorTest() {
+        // given
+        var category1 = Category().also {
+            it.name = "비데"
+        }
+        var category2 = Category().also {
+            it.name = "매트리스"
+        }
+        var category3 = Category().also {
+            it.name = "정수기"
+        }
+        var category4 = Category().also {
+            it.name = "공기청정기"
+        }
+        categoryRepository.save(category1)
+        categoryRepository.save(category2)
+        categoryRepository.save(category3)
+        categoryRepository.save(category4)
+
+
+        var bidet = Bidet().also {
+            it.name = "a123"
+            it.category = category1
+            it.color = "white"
+        }
+        var bidet2 = Bidet().also {
+            it.name = "a123"
+            it.category = category1
+            it.color = "black"
+        }
+        var airCleaner1 = AirCleaner().also {
+            it.name = "air123"
+            it.category = category4
+            it.color = "black"
+        }
+        itemRepository.save(bidet)
+        itemRepository.save(bidet2)
+        itemRepository.save(airCleaner1)
+
+        // when
+        val name = "a123"
+        val color = "black"
+
+        val findItem = itemRepository.findByNameAndColor(name, color)
+
+        // then
+        assertEquals(findItem?.name, "a123")
+        assertEquals(findItem?.color, "black")
+        assertEquals(findItem?.category?.name, "비데")
+    }
 }

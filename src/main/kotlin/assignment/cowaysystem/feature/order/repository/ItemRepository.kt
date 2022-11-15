@@ -11,6 +11,8 @@ import org.springframework.data.repository.query.Param
 interface ItemRepository: JpaRepository<Item, Long> {
     fun findByName(name: String?): Item?
 
+    fun findByNameAndColor(name: String?, color: String?): Item?
+
     @Query(
             """
                 select i

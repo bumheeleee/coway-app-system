@@ -6,6 +6,7 @@ package assignment.cowaysystem.feature.order.dto
 class OrderReq(
         val itemName: String,
         val count: Int,
-        val color: String
+        val color: String,
+        val serviceYn: String? = null
 ){
 }
