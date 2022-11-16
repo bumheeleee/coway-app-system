@@ -1,11 +1,14 @@
 package assignment.cowaysystem.feature.order.controller
 
 import assignment.cowaysystem.feature.order.controller.dto.VisitServiceReq
+import assignment.cowaysystem.feature.order.controller.dto.VisitServiceRes
 import assignment.cowaysystem.feature.order.service.VisitService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -22,7 +25,15 @@ class VisitController(
     fun saveVisit(
             @RequestBody visitServiceReq: VisitServiceReq
     ): ResponseEntity<String>{
-        val visit = visitService.saveVisit(visitServiceReq)
-        return if (visit != null) ResponseEntity.ok("ok") else ResponseEntity(HttpStatus.BAD_REQUEST)
+        val res = visitService.saveVisit(visitServiceReq)
+        return if (res) ResponseEntity.ok("ok") else ResponseEntity(HttpStatus.BAD_REQUEST)
+    }
+
+    @GetMapping("/{visitId}")
+    @ApiOperation("방문서비스 이용 내역 조회")
+    fun getVisit(
+            @PathVariable("visitId") visitId: Long
+    ): VisitServiceRes{
+        return VisitServiceRes(visitService.getVisit(visitId))
     }
 }

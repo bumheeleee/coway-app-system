@@ -18,7 +18,7 @@ class VisitService(
     @Transactional
     fun saveVisit(
             visitServiceReq: VisitServiceReq
-    ): Visit{
+    ): Boolean{
         val orderItem = orderItemRepository.findById(visitServiceReq.orderItemId)
         if (orderItem.isPresent){
             val visit = Visit().createVisit(
@@ -26,9 +26,24 @@ class VisitService(
                     visitServiceReq.visitTime,
                     orderItem.get()
             )
-            return visitRepository.save(visit)
+            visitRepository.save(visit)
         }else{
             throw NotFoundException("${visitServiceReq.orderItemId}는 존재하지 않습니다.")
+        }
+        return true
+    }
+
+    /**
+     * test를 위한 서비스
+     */
+    fun getVisit(
+            visitId: Long
+    ): Visit{
+        val findVisit = visitRepository.findById(visitId)
+        if (findVisit.isPresent){
+            return findVisit.get()
+        }else{
+            throw NotFoundException("${visitId}는 존재하지 않습니다.")
         }
     }
 }
