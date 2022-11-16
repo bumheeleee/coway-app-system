@@ -1,4 +1,4 @@
-package assignment.cowaysystem.feature.order.dto
+package assignment.cowaysystem.feature.order.controller.dto
 
 /**
  * 주문을 하기 위한 req dto

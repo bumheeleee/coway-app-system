@@ -1,7 +1,7 @@
 package assignment.cowaysystem.feature.order.controller
 
 import assignment.cowaysystem.common.exception.BadRequestException
-import assignment.cowaysystem.feature.order.dto.SaveItemReq
+import assignment.cowaysystem.feature.order.controller.dto.SaveItemReq
 import assignment.cowaysystem.feature.order.service.DeliveryService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation

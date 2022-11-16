@@ -1,8 +1,8 @@
 package assignment.cowaysystem.feature.order.controller
 
 import assignment.cowaysystem.common.exception.BadRequestException
-import assignment.cowaysystem.feature.order.dto.SaveItemReq
-import assignment.cowaysystem.feature.order.dto.SearchItemRes
+import assignment.cowaysystem.feature.order.controller.dto.SaveItemReq
+import assignment.cowaysystem.feature.order.controller.dto.SearchItemRes
 import assignment.cowaysystem.feature.order.repository.CategoryRepository
 import assignment.cowaysystem.feature.order.service.ItemService
 import io.swagger.annotations.Api

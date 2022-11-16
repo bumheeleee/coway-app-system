@@ -1,6 +1,6 @@
 package assignment.cowaysystem.user.service
 
-import assignment.cowaysystem.feature.order.dto.MemberFormDto
+import assignment.cowaysystem.feature.order.controller.dto.MemberFormDto
 import assignment.cowaysystem.feature.order.entity.Address
 import assignment.cowaysystem.feature.order.service.MemberService
 import org.junit.jupiter.api.Assertions.*

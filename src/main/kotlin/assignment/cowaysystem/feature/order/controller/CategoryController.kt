@@ -1,7 +1,7 @@
 package assignment.cowaysystem.feature.order.controller
 
-import assignment.cowaysystem.feature.order.dto.CategoryReq
-import assignment.cowaysystem.feature.order.dto.SearchItemRes
+import assignment.cowaysystem.feature.order.controller.dto.CategoryReq
+import assignment.cowaysystem.feature.order.controller.dto.SearchItemRes
 import assignment.cowaysystem.feature.order.service.CategoryService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation

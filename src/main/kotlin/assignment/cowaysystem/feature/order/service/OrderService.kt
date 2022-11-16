@@ -2,8 +2,8 @@ package assignment.cowaysystem.feature.order.service
 
 import assignment.cowaysystem.common.exception.BadRequestException
 import assignment.cowaysystem.common.exception.NotFoundException
-import assignment.cowaysystem.feature.order.dto.OrderList
-import assignment.cowaysystem.feature.order.dto.OrderReq
+import assignment.cowaysystem.feature.order.controller.dto.OrderList
+import assignment.cowaysystem.feature.order.controller.dto.OrderReq
 import assignment.cowaysystem.feature.order.entity.*
 import assignment.cowaysystem.feature.order.repository.ItemRepository
 import assignment.cowaysystem.feature.order.repository.MemberRepository

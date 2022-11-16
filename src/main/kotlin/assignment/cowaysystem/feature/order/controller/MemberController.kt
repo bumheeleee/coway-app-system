@@ -1,7 +1,7 @@
 package assignment.cowaysystem.feature.order.controller
 
 import assignment.cowaysystem.common.util.throwIfHasErrors
-import assignment.cowaysystem.feature.order.dto.MemberFormDto
+import assignment.cowaysystem.feature.order.controller.dto.MemberFormDto
 import assignment.cowaysystem.feature.order.service.MemberService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation

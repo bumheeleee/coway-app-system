@@ -1,7 +1,7 @@
 package assignment.cowaysystem.feature.order.service
 
-import assignment.cowaysystem.feature.order.dto.MemberFormDto
-import assignment.cowaysystem.feature.order.dto.OrderReq
+import assignment.cowaysystem.feature.order.controller.dto.MemberFormDto
+import assignment.cowaysystem.feature.order.controller.dto.OrderReq
 import assignment.cowaysystem.feature.order.entity.Address
 import assignment.cowaysystem.feature.order.entity.Category
 import assignment.cowaysystem.feature.order.entity.item.AirCleaner
