@@ -16,5 +16,5 @@ class Category {
 
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL])
-    val items: List<Item> = mutableListOf()
+    val items: MutableList<Item> = mutableListOf()
 }

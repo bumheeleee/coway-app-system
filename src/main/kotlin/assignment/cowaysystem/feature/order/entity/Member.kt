@@ -26,4 +26,7 @@ class Member: BaseTimeEntity() {
 
     @Embedded
     var address: Address? = null
+
+    @OneToMany(mappedBy = "member", cascade = [CascadeType.ALL])
+    var orders: MutableList<Order> = mutableListOf()
 }

@@ -27,9 +27,6 @@ abstract class Item {
 
     var color: String? = null
 
-    //주기적 방문 서비스 이용 여부
-    var serviceYn: String? = null
-
     /**
      * stock 증가
      */

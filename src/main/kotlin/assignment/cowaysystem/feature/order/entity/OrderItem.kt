@@ -25,15 +25,19 @@ class OrderItem {
 
     var color: String? = null
 
+    //주기적 방문 서비스 이용 여부
+    var serviceYn: String? = "N"
+
     /**
      * orderItem 생성
      */
-    fun createOrderItem(item: Item, count: Int, color: String): OrderItem{
+    fun createOrderItem(item: Item, count: Int, color: String, serviceYn: String?): OrderItem{
         val orderItem = OrderItem().also {
             it.item = item
             it.orderPrice = item.price
             it.count = count
             it.color = color
+            it.serviceYn = serviceYn
         }
         item.removeStock(count)
         return orderItem

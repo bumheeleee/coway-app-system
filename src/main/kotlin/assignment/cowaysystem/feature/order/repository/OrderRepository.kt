@@ -12,5 +12,5 @@ interface OrderRepository: JpaRepository<Order, Long> {
         from Order o join o.member m
         where m.loginId = :loginId
     """)
-    fun findOrderByLoginId(@Param("loginId") loginId: String): List<Order>
+    fun findOrderByLoginId(@Param("loginId") loginId: String?): List<Order>
 }
