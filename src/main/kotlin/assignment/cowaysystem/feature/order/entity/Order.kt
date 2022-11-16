@@ -69,7 +69,7 @@ class Order {
 //    }
 
     /**
-     * 주문 기능
+     * 주문 생성 기능
      */
     fun createOrder(
             member: Member,

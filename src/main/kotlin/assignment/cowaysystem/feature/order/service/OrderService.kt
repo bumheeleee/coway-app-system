@@ -42,7 +42,6 @@ class OrderService(
         val orderMember = memberRepository.findByLoginId(loginId)
                 ?: throw BadRequestException("주문하려는 ${loginId}가 존재하지 않습니다.")
 
-
         /**
          * 주문한 상품의 리스트
          */
@@ -118,15 +117,15 @@ class OrderService(
             loginId: String?
     ): List<Item>{
         val orders = findOrders(loginId)
-        val oldOrderItems = mutableListOf<OrderItem>()
+        val useServiceItems = mutableListOf<OrderItem>()
 
         orders.forEach {oldOrder ->
             oldOrder.orderItems.forEach {orderItem ->
-                if (orderItem.serviceYn == "Y") oldOrderItems.add(orderItem)
+                if (orderItem.serviceYn == "Y") useServiceItems.add(orderItem)
             }
         }
 
-        return oldOrderItems.map { it.item!! }
+        return useServiceItems.map { it.item!! }
     }
 
 
