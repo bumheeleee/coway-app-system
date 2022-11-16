@@ -17,14 +17,15 @@ class Visit {
 
     var visitTime: LocalDateTime? = null
 
-    @OneToMany(mappedBy = "visit")
-    var orderItems: MutableList<OrderItem> = mutableListOf()
+    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "order_item_id")
+    var orderItem: OrderItem? = null
 
     /**
      * 연관관계 편의 메소드
      */
     fun addOrderItem(orderItem: OrderItem){
-        this.orderItems.add(orderItem)
+        this.orderItem = orderItem
         orderItem.visit = this
     }
 

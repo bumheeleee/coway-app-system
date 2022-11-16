@@ -19,7 +19,7 @@ class OrderItem {
     @JoinColumn(name = "order_id")
     var order: Order? = null
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "orderItem")
     @JoinColumn(name = "visit_id")
     var visit: Visit? = null
 
