@@ -1,6 +1,6 @@
 package assignment.cowaysystem.feature.order.controller
 
-import assignment.cowaysystem.feature.order.controller.dto.ItemRes
+import assignment.cowaysystem.feature.order.controller.dto.OrderItemRes
 import assignment.cowaysystem.feature.order.controller.dto.OrderReq
 import assignment.cowaysystem.feature.order.controller.dto.OrderRes
 import assignment.cowaysystem.feature.order.service.OrderService
@@ -52,9 +52,9 @@ class OrderController(
     @ApiOperation("방문서비스 이용 상품검색", notes = "방문 서비스를 신청한 상품에 대한 상품검색")
     fun getUseServiceItem(
             @PathVariable("loginId") loginId: String,
-    ): List<ItemRes>{
+    ): List<OrderItemRes>{
         return orderService.findItemsByUseService(loginId).map {
-            ItemRes(it)
+            OrderItemRes(it)
         }
     }
 
@@ -62,9 +62,9 @@ class OrderController(
     @ApiOperation("방문서비스 이용 상품중 3개월 지난 상품검색", notes = "방문 서비스를 신청한 상품중 3개월이 지난 상품검색")
     fun getOldItem(
             @PathVariable("loginId") loginId: String,
-    ): List<ItemRes>{
+    ): List<OrderItemRes>{
         return orderService.findOldItemsByUseService(loginId).map {
-            ItemRes(it)
+            OrderItemRes(it)
         }
     }
 
@@ -72,9 +72,9 @@ class OrderController(
     @ApiOperation("배달이 완료된 상품", notes = "특정 회원의 상품중 배달이 완료된 상품을 조회")
     fun getDeliveryCompItem(
             @PathVariable("loginId") loginId: String
-    ): List<ItemRes>{
+    ): List<OrderItemRes>{
         return orderService.findCompDeliveryItem(loginId).map {
-            ItemRes(it)
+            OrderItemRes(it)
         }
     }
 

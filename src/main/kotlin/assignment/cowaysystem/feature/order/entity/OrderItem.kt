@@ -19,6 +19,10 @@ class OrderItem {
     @JoinColumn(name = "order_id")
     var order: Order? = null
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "visit_id")
+    var visit: Visit? = null
+
     var orderPrice: Int = 0
 
     var count: Int = 0

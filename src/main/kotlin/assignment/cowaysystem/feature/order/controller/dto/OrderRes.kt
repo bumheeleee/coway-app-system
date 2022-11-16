@@ -13,8 +13,9 @@ class OrderRes(
 
     val deliveryEdDt = order.delivery?.deliveryEdDt
 
-    val itemRes = order.orderItems.map {
-        it.item?.let { it1 -> ItemRes(it1) }
+    val orderItemRes = order.orderItems.map {
+        OrderItemRes(it)
     }
+
     val orderDate = order.orderDate
 }

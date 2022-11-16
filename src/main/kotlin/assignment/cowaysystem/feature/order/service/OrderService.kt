@@ -113,17 +113,17 @@ class OrderService(
      */
     fun findItemsByUseService(
             loginId: String?
-    ): List<Item>{
+    ): List<OrderItem>{
         val orders = findOrders(loginId)
-        val useServiceItems = mutableListOf<OrderItem>()
+        val orderItems = mutableListOf<OrderItem>()
 
         orders.forEach {order ->
             order.orderItems.forEach {orderItem ->
-                if (orderItem.serviceYn == "Y") useServiceItems.add(orderItem)
+                if (orderItem.serviceYn == "Y") orderItems.add(orderItem)
             }
         }
 
-        return useServiceItems.map { it.item!! }
+        return orderItems
     }
 
     /**
@@ -131,7 +131,7 @@ class OrderService(
      */
     fun findOldItemsByUseService(
             loginId: String?
-    ): List<Item>{
+    ): List<OrderItem>{
         val orders = findOrders(loginId)
         val oldOrderItems = mutableListOf<OrderItem>()
 
@@ -149,7 +149,7 @@ class OrderService(
             }
         }
 
-        return oldOrderItems.map { it.item!! }
+        return oldOrderItems
     }
 
     /**
@@ -157,7 +157,7 @@ class OrderService(
      */
     fun findCompDeliveryItem(
             loginId: String
-    ): List<Item>{
+    ): List<OrderItem>{
         val orders = findOrders(loginId)
         val deliveryCompItem = mutableListOf<OrderItem>()
 
@@ -170,11 +170,6 @@ class OrderService(
                 deliveryCompItem.add(orderItem)
             }
         }
-        return deliveryCompItem.map { it.item!! }
+        return deliveryCompItem
     }
-
-
-
-
-
 }
