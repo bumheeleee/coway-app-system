@@ -7,4 +7,5 @@ class ItemRes(
 ){
     val name = item.name
     val price = item.price
+    val color = item.color
 }

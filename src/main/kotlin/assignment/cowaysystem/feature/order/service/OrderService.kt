@@ -117,16 +117,14 @@ class OrderService(
         val orders = findOrders(loginId)
         val useServiceItems = mutableListOf<OrderItem>()
 
-        orders.forEach {oldOrder ->
-            oldOrder.orderItems.forEach {orderItem ->
+        orders.forEach {order ->
+            order.orderItems.forEach {orderItem ->
                 if (orderItem.serviceYn == "Y") useServiceItems.add(orderItem)
             }
         }
 
         return useServiceItems.map { it.item!! }
     }
-
-
 
     /**
      * 방문 서비스 신청한 상품 중 3개월이 지난 상품
@@ -153,5 +151,30 @@ class OrderService(
 
         return oldOrderItems.map { it.item!! }
     }
+
+    /**
+     * 배달이 완료된 상품 조회
+     */
+    fun findCompDeliveryItem(
+            loginId: String
+    ): List<Item>{
+        val orders = findOrders(loginId)
+        val deliveryCompItem = mutableListOf<OrderItem>()
+
+        val compOrders = orders.filter {
+            it.delivery?.status == DeliveryStatus.COMP
+        }
+
+        compOrders.forEach {compOrder ->
+            compOrder.orderItems.forEach { orderItem ->
+                deliveryCompItem.add(orderItem)
+            }
+        }
+        return deliveryCompItem.map { it.item!! }
+    }
+
+
+
+
 
 }

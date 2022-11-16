@@ -68,4 +68,14 @@ class OrderController(
         }
     }
 
+    @GetMapping("delivery/{loginId}")
+    @ApiOperation("배달이 완료된 상품", notes = "특정 회원의 상품중 배달이 완료된 상품을 조회")
+    fun getDeliveryCompItem(
+            @PathVariable("loginId") loginId: String
+    ): List<ItemRes>{
+        return orderService.findCompDeliveryItem(loginId).map {
+            ItemRes(it)
+        }
+    }
+
 }
