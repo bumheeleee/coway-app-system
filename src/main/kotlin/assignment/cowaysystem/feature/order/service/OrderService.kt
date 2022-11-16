@@ -4,10 +4,7 @@ import assignment.cowaysystem.common.exception.BadRequestException
 import assignment.cowaysystem.common.exception.NotFoundException
 import assignment.cowaysystem.feature.order.dto.OrderList
 import assignment.cowaysystem.feature.order.dto.OrderReq
-import assignment.cowaysystem.feature.order.entity.Delivery
-import assignment.cowaysystem.feature.order.entity.DeliveryStatus
-import assignment.cowaysystem.feature.order.entity.Order
-import assignment.cowaysystem.feature.order.entity.OrderItem
+import assignment.cowaysystem.feature.order.entity.*
 import assignment.cowaysystem.feature.order.repository.ItemRepository
 import assignment.cowaysystem.feature.order.repository.MemberRepository
 import assignment.cowaysystem.feature.order.repository.OrderRepository
@@ -106,7 +103,7 @@ class OrderService(
      * 특정 회원이 주문한 모든 내용을 보여줌
      */
     fun findOrders(loginId: String?): List<Order>{
-        val orders = orderRepository.findOrderByLoginId(loginId)
+        val orders = orderRepository.findOrderByLoginId(loginId, OrderStatus.ORDER)
         if (orders.isEmpty()) throw NotFoundException("${loginId}를 찾을수 없습니다.")
         return orders
     }

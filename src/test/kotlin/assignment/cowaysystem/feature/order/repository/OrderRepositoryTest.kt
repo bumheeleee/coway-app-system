@@ -5,6 +5,7 @@ import assignment.cowaysystem.feature.order.dto.MemberFormDto
 import assignment.cowaysystem.feature.order.dto.OrderReq
 import assignment.cowaysystem.feature.order.entity.Address
 import assignment.cowaysystem.feature.order.entity.Category
+import assignment.cowaysystem.feature.order.entity.OrderStatus
 import assignment.cowaysystem.feature.order.entity.item.AirCleaner
 import assignment.cowaysystem.feature.order.entity.item.Bidet
 import assignment.cowaysystem.feature.order.service.ItemService
@@ -111,21 +112,23 @@ internal class OrderRepositoryTest {
         listOrderReq.add(orderReq2)
         listOrderReq.add(orderReq5)
 
-        val orderReq3 = OrderReq("b123", 10, "black")
-        val orderReq4 = OrderReq("air123", 10, "white")
+        val orderReq3 = OrderReq("b123", 10, "white")
+        val orderReq4 = OrderReq("air123", 10, "green")
         listOrderReq2.add(orderReq3)
         listOrderReq2.add(orderReq4)
 
         val order = orderService.order(loginId, listOrderReq)
         val order2 = orderService.order(loginId, listOrderReq2)
 
+        order.status = OrderStatus.ORDER
+        order2.status = OrderStatus.CANCEL
+
         // when
-        val findOrderByLoginId = orderRepository.findOrderByLoginId(loginId)?: throw NotFoundException("not found")
+        val findOrderByLoginId = orderRepository.findOrderByLoginId(loginId,OrderStatus.ORDER)?: throw NotFoundException("not found")
 
         // then
-        assertEquals(findOrderByLoginId.size, 2)
+        assertEquals(findOrderByLoginId.size, 1)
         assertEquals(findOrderByLoginId[0].orderItems.size, 3)
-        assertEquals(findOrderByLoginId[1].orderItems.size, 2)
 
         findOrderByLoginId.forEach {
             it.orderItems.forEach {
