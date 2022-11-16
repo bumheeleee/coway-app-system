@@ -96,9 +96,10 @@ class OrderService(
      * 주문 취소
      */
     @Transactional
-    fun cancelOrder(orderId: Long?){
+    fun cancelOrder(orderId: Long?): Boolean{
         val findOrder = orderRepository.findByIdOrNull(orderId)?: throw NotFoundException("${orderId}를 찾을수 없습니다.")
         findOrder.cancel()
+        return true
     }
 
     /**
