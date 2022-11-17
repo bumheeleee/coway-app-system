@@ -1,5 +1,6 @@
 package assignment.cowaysystem.feature.order.controller
 
+import assignment.cowaysystem.common.util.throwIfHasErrors
 import assignment.cowaysystem.feature.order.controller.dto.CategoryReq
 import assignment.cowaysystem.feature.order.controller.dto.SearchItemRes
 import assignment.cowaysystem.feature.order.service.CategoryService
@@ -8,12 +9,14 @@ import io.swagger.annotations.ApiOperation
 import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/category")
@@ -27,8 +30,10 @@ class CategoryController(
     @ApiOperation("카테고리 추가", notes = "모든 상품은 카테고리가 있어야 한다.")
     @PostMapping
     fun saveItem(
-            @RequestBody categoryReq: CategoryReq
+            @RequestBody @Valid categoryReq: CategoryReq,
+            bindingResult: BindingResult
     ): ResponseEntity<String> {
+        bindingResult.throwIfHasErrors()
         val saveCategory = categoryService.saveCategory(categoryReq.toCategory())
         return if (saveCategory != null) ResponseEntity.ok("ok") else ResponseEntity(HttpStatus.BAD_REQUEST)
     }
