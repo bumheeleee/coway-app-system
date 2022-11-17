@@ -3,7 +3,9 @@ package assignment.cowaysystem.feature.order.service
 import assignment.cowaysystem.common.dto.PageableDto
 import assignment.cowaysystem.common.exception.BadRequestException
 import assignment.cowaysystem.common.exception.NotFoundException
+import assignment.cowaysystem.feature.order.controller.dto.SaveItemReq
 import assignment.cowaysystem.feature.order.entity.item.Item
+import assignment.cowaysystem.feature.order.repository.CategoryRepository
 import assignment.cowaysystem.feature.order.repository.ItemRepository
 import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
@@ -12,10 +14,13 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional(readOnly = true)
 class ItemService(
-        private val itemRepository: ItemRepository
+        private val itemRepository: ItemRepository,
+        private val categoryRepository: CategoryRepository
 ){
     @Transactional
-    fun saveItem(item: Item): Item{
+    fun saveItem(saveItemReq: SaveItemReq): Item{
+        val category = categoryRepository.findByName(saveItemReq.category)?: throw BadRequestException("존재하지 않는 카테고리입니다.")
+        val item = saveItemReq.toItem(category)?: throw BadRequestException("존재하지 않는 아이템입니다.")
         return itemRepository.save(item)
     }
 
