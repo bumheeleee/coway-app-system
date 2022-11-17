@@ -16,5 +16,12 @@ spring:
         format_sql: true
         use_sql_comments: true
 
+# ResponseStatusException 을 반환할 때 포함할 내용을 설정합니다.
+server:
+  error:
+    include-exception: true
+    include-message: always
+    include-stacktrace: always
+
 logging.level:
   org.hibernate.SQL: debug
