@@ -10,7 +10,7 @@ class Delivery {
     @Id
     @GeneratedValue
     @Column(name = "delivery_id")
-    var id: Long? = null
+    var id: Long = 0
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "delivery")
     var order: Order? = null

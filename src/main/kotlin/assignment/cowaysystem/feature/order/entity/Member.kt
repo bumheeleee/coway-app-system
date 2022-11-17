@@ -17,6 +17,7 @@ class Member: BaseTimeEntity() {
     @JoinColumn(name = "authority_id")
     var authority: Authority? = null
 
+    @Column(unique = true)
     var username: String? = null
 
     @Column(unique = true)

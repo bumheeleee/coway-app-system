@@ -9,7 +9,7 @@ class Order {
     @Id
     @GeneratedValue
     @Column(name = "order_id")
-    var id: Long? = null
+    var id: Long = 0
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
