@@ -1,6 +1,6 @@
 package assignment.cowaysystem.feature.order.entity
 
-import assignment.cowaysystem.feature.order.entity.item.Item
+import assignment.cowaysystem.feature.order.controller.dto.VisitServiceReq
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -30,13 +30,14 @@ class Visit {
     }
 
     fun createVisit(
-            address: Address,
-            visitTime: LocalDateTime,
+            visitServiceReq: VisitServiceReq,
             orderItem: OrderItem
     ): Visit{
         val visit = Visit().also {
-            it.address = address
-            it.visitTime = visitTime
+            it.address?.city = visitServiceReq.city
+            it.address?.street = visitServiceReq.street
+            it.address?.zipcode = visitServiceReq.zipcode
+            it.visitTime = visitServiceReq.visitTime
         }
         visit.addOrderItem(orderItem)
         return visit
