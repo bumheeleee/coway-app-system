@@ -116,49 +116,4 @@ class OrderService(
         if (orders.isEmpty()) throw NotFoundException("${loginId}이 주문취소한 내용을 찾을 수 없습니다.")
         return orders
     }
-
-
-    /**
-     * 방문 서비스 신청한 상품 검색
-     */
-    fun findItemsByUseService(
-            loginId: String?
-    ): List<OrderItem>{
-        val orders = findOrders(loginId)
-        val orderItems = mutableListOf<OrderItem>()
-
-        orders.forEach {order ->
-            order.orderItems.forEach {orderItem ->
-                if (orderItem.serviceYn == "Y") orderItems.add(orderItem)
-            }
-        }
-
-        return orderItems
-    }
-
-    /**
-     * 방문 서비스 신청한 상품 중 3개월이 지난 상품
-     */
-    fun findOldItemsByUseService(
-            loginId: String?
-    ): List<OrderItem>{
-        val orders = findOrders(loginId)
-        val oldOrderItems = mutableListOf<OrderItem>()
-
-        /**
-         * 배송이 완료된 시간에서 3개월 지난 시간이 현재 시간보다 작은경우 (배송완료 후 3개울이 지났다.)
-         * 3개월이 지난 주문 (3개월은 정책으로 내가 정함)
-         */
-        val oldOrders = orders.filter {
-            it.delivery?.deliveryEdDt?.plusMonths(3)?.isBefore(LocalDateTime.now()) == true
-        }
-
-        oldOrders.forEach {oldOrder ->
-            oldOrder.orderItems.forEach {orderItem ->
-                if (orderItem.serviceYn == "Y") oldOrderItems.add(orderItem)
-            }
-        }
-
-        return oldOrderItems
-    }
 }

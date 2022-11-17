@@ -55,24 +55,4 @@ class OrderController(
             OrderRes(it)
         }
     }
-
-    @GetMapping("service/{loginId}")
-    @ApiOperation("방문서비스 이용 상품검색", notes = "방문 서비스를 신청한 상품에 대한 상품검색")
-    fun getUseServiceItem(
-            @PathVariable("loginId") loginId: String,
-    ): List<OrderItemRes>{
-        return orderService.findItemsByUseService(loginId).map {
-            OrderItemRes(it)
-        }
-    }
-
-    @GetMapping("service/{loginId}/old")
-    @ApiOperation("방문서비스 이용 상품중 3개월 지난 상품검색", notes = "방문 서비스를 신청한 상품중 3개월이 지난 상품검색")
-    fun getOldItem(
-            @PathVariable("loginId") loginId: String,
-    ): List<OrderItemRes>{
-        return orderService.findOldItemsByUseService(loginId).map {
-            OrderItemRes(it)
-        }
-    }
 }
