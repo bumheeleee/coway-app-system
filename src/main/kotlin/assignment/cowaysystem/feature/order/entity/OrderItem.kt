@@ -35,7 +35,7 @@ class OrderItem {
     /**
      * orderItem 생성
      */
-    fun createOrderItem(item: Item, count: Int, color: String, serviceYn: String?): OrderItem{
+    fun createOrderItem(item: Item, count: Int, color: String?, serviceYn: String?): OrderItem{
         val orderItem = OrderItem().also {
             it.item = item
             it.orderPrice = item.price
