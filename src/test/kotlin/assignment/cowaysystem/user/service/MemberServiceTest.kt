@@ -26,8 +26,8 @@ internal class MemberServiceTest{
     @Rollback(value = false)
     fun saveTest() {
         // given
-        val address = Address("incheon", "senhak", "12341")
-        val memberFormDto = MemberFormDto("lee123","lee", "email", "password", address)
+        val memberFormDto = MemberFormDto("lee123","lee", "email", "password", "incheon",
+                "senhak", "12341")
 
         // when
         val savedMember = memberService.save(memberFormDto.toEntity(passwordEncoder))

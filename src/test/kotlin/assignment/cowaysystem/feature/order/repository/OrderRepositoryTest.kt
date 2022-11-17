@@ -96,8 +96,8 @@ internal class OrderRepositoryTest {
         /**
          * 회원
          */
-        val address = Address("incheon", "senhak", "12341")
-        val memberFormDto = MemberFormDto("lee123","lee", "email", "password", address)
+        val memberFormDto = MemberFormDto("lee123","lee", "email", "password", "incheon",
+                "senhak", "12341")
         val savedMember = memberService.save(memberFormDto.toEntity(passwordEncoder))
 
         // when
