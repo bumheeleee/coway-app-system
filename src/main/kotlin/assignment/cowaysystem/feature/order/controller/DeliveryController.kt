@@ -19,7 +19,7 @@ class DeliveryController(
     /**
      * 테스트를 위한 api
      */
-    @ApiOperation("배달 완료", notes = "해당 주문에 대해 배달 완료 처리")
+    @ApiOperation("배달 완료 기능", notes = "해당 주문에 대해 배달 완료 처리")
     @PostMapping("/{orderId}")
     fun saveItem(
             @PathVariable("orderId") orderId: Long
@@ -30,7 +30,7 @@ class DeliveryController(
 
 
     @GetMapping("delivery/{loginId}")
-    @ApiOperation("배달이 완료된 상품", notes = "특정 회원의 상품중 배달이 완료된 상품을 조회")
+    @ApiOperation("배달이 완료된 상품 조회", notes = "특정 회원의 상품중 배달이 완료된 상품을 조회")
     fun getDeliveryCompItem(
             @PathVariable("loginId") loginId: String
     ): List<OrderItemRes>{
