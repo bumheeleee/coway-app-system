@@ -161,25 +161,4 @@ class OrderService(
 
         return oldOrderItems
     }
-
-    /**
-     * 배달이 완료된 상품 조회
-     */
-    fun findCompDeliveryItem(
-            loginId: String
-    ): List<OrderItem>{
-        val orders = findOrders(loginId)
-        val deliveryCompItem = mutableListOf<OrderItem>()
-
-        val compOrders = orders.filter {
-            it.delivery?.status == DeliveryStatus.COMP
-        }
-
-        compOrders.forEach {compOrder ->
-            compOrder.orderItems.forEach { orderItem ->
-                deliveryCompItem.add(orderItem)
-            }
-        }
-        return deliveryCompItem
-    }
 }
