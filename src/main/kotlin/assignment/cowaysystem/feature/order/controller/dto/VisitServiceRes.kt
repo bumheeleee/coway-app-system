@@ -5,7 +5,11 @@ import assignment.cowaysystem.feature.order.entity.Visit
 class VisitServiceRes(
         visit: Visit
 ){
-    val address = visit.address
+    val city = visit.address?.city
+
+    val street = visit.address?.street
+
+    val zipcode = visit.address?.zipcode
 
     val visitTime = visit.visitTime
 

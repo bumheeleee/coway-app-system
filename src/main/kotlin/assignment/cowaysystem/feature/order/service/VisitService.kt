@@ -1,12 +1,9 @@
 package assignment.cowaysystem.feature.order.service
 
 import assignment.cowaysystem.feature.order.controller.dto.VisitServiceReq
-import assignment.cowaysystem.feature.order.entity.Visit
 import assignment.cowaysystem.feature.order.repository.VisitRepository
 import assignment.cowaysystem.common.exception.NotFoundException
-import assignment.cowaysystem.feature.order.entity.Order
-import assignment.cowaysystem.feature.order.entity.OrderItem
-import assignment.cowaysystem.feature.order.entity.OrderStatus
+import assignment.cowaysystem.feature.order.entity.*
 import assignment.cowaysystem.feature.order.repository.OrderItemRepository
 import assignment.cowaysystem.feature.order.repository.OrderRepository
 
@@ -26,8 +23,14 @@ class VisitService(
             visitServiceReq: VisitServiceReq
     ): Boolean{
         val orderItem = orderItemRepository.findById(visitServiceReq.orderItemId)
+        val address = Address(
+                visitServiceReq.city,
+                visitServiceReq.street,
+                visitServiceReq.zipcode
+        )
         if (orderItem.isPresent){
             val visit = Visit().createVisit(
+                    address,
                     visitServiceReq,
                     orderItem.get()
             )

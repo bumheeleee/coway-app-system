@@ -30,13 +30,12 @@ class Visit {
     }
 
     fun createVisit(
+            address: Address,
             visitServiceReq: VisitServiceReq,
             orderItem: OrderItem
     ): Visit{
         val visit = Visit().also {
-            it.address?.city = visitServiceReq.city
-            it.address?.street = visitServiceReq.street
-            it.address?.zipcode = visitServiceReq.zipcode
+            it.address = address
             it.visitTime = visitServiceReq.visitTime
         }
         visit.addOrderItem(orderItem)
