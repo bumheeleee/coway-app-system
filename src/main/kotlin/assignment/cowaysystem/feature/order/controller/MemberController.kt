@@ -23,7 +23,7 @@ class MemberController(
         private val passwordEncoder: PasswordEncoder
 ){
     @ApiOperation("회원생성")
-    @PostMapping( "/new")
+    @PostMapping
     fun save(
             @RequestBody @Valid memberFormDto: MemberFormDto,
             bindingResult: BindingResult
