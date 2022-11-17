@@ -104,9 +104,19 @@ class OrderService(
      */
     fun findOrders(loginId: String?): List<Order>{
         val orders = orderRepository.findOrderByLoginId(loginId, OrderStatus.ORDER)
-        if (orders.isEmpty()) throw NotFoundException("${loginId}를 찾을수 없습니다.")
+        if (orders.isEmpty()) throw NotFoundException("${loginId}이 주문한 내용을 찾을 수 없습니다.")
         return orders
     }
+
+    /**
+     * 특정 회원이 주문한 취소한 모든 내용을 보여줌
+     */
+    fun findCancelOrders(loginId: String?): List<Order>{
+        val orders = orderRepository.findOrderByLoginId(loginId, OrderStatus.CANCEL)
+        if (orders.isEmpty()) throw NotFoundException("${loginId}이 주문취소한 내용을 찾을 수 없습니다.")
+        return orders
+    }
+
 
     /**
      * 방문 서비스 신청한 상품 검색

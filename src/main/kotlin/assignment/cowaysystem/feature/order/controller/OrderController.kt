@@ -48,6 +48,14 @@ class OrderController(
         }
     }
 
+    @GetMapping("cancel/{loginId}")
+    @ApiOperation("주문취소 조회 기능", notes = "특정 회원이 주문 취소한 주문서 조회")
+    fun getCancelOrder(@PathVariable("loginId") loginId: String): List<OrderRes>{
+        return orderService.findCancelOrders(loginId).map {
+            OrderRes(it)
+        }
+    }
+
     @GetMapping("service/{loginId}")
     @ApiOperation("방문서비스 이용 상품검색", notes = "방문 서비스를 신청한 상품에 대한 상품검색")
     fun getUseServiceItem(
