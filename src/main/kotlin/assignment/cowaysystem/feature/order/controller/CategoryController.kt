@@ -1,6 +1,7 @@
 package assignment.cowaysystem.feature.order.controller
 
 import assignment.cowaysystem.common.util.throwIfHasErrors
+import assignment.cowaysystem.feature.order.controller.dto.CategoryNameRes
 import assignment.cowaysystem.feature.order.controller.dto.CategoryReq
 import assignment.cowaysystem.feature.order.controller.dto.SearchItemRes
 import assignment.cowaysystem.feature.order.service.CategoryService
@@ -39,15 +40,13 @@ class CategoryController(
     }
 
     /**
-     * 카테고리를 통한 Item 검색
+     * 모든 항목 카테고리 이름 검색
      */
-    @ApiOperation("카테고리를 통한 상품검색", notes = "인기 상품에서 카테고리 이름을 통한 검색")
-    @GetMapping("/{name}")
-    fun findItemByCategory(
-            @PathVariable("name") name: String
-    ): List<SearchItemRes>{
-        return categoryService.findItemByCategory(name).map {
-            SearchItemRes(it)
+    @ApiOperation("모든 카테고리 종류 검색", notes = "모든 카테고리 종류 검색 API")
+    @GetMapping
+    fun findItemByCategory(): List<CategoryNameRes>{
+        return categoryService.findAll().map {
+            CategoryNameRes(it)
         }
     }
 }

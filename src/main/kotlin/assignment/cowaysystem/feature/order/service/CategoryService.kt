@@ -18,9 +18,11 @@ class CategoryService(
         return categoryRepository.save(category)
     }
 
-    fun findItemByCategory(name: String): List<Item>{
-        val findCategory = categoryRepository.findByName(name)
-                ?: throw NotFoundException("${name}은/는 존재하지 않는 카테고리입니다.")
-        return findCategory.items
+    fun findAll(): List<Category>{
+        val categories = categoryRepository.findAll()
+        if (categories.isEmpty()){
+            throw NotFoundException("카테고리 항목이 비어있습니다.")
+        }
+        return categories
     }
 }
