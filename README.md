@@ -40,6 +40,7 @@
 <img src="https://user-images.githubusercontent.com/64251951/206708209-cc7a244d-8bf4-4e7e-ba4e-13d9be31b2dd.png" width="400" height="300"/>
 <img src="https://user-images.githubusercontent.com/64251951/206708254-b0117811-9248-4b3b-b197-cad67a9987b1.png" width="400" height="300"/>
 -----------------------
- 
+ # 🎹 ERD
+ * https://www.erdcloud.com/d/kL6LwTHqD6BB99Cti
 
 
