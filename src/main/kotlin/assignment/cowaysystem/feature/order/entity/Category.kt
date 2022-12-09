@@ -14,7 +14,6 @@ class Category {
 
     var name: String? = null
 
-    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL])
     val items: MutableList<Item> = mutableListOf()
 }
