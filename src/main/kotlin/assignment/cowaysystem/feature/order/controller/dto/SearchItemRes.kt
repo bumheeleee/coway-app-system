@@ -8,5 +8,5 @@ class SearchItemRes(
     var price = item.price
     var stockQuantity = item.stockQuantity
     var color = item.color
-    var category = item.category
+    var categoryName = item.category?.name
 }
