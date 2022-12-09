@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/visit")
+@RequestMapping("/visits")
 @Api(tags = ["방문 서비스 관리"])
 class VisitController(
         private val visitService: VisitService

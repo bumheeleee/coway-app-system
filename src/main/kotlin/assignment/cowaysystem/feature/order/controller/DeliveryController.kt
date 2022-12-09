@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/delivery")
+@RequestMapping("/deliveries")
 @Api(tags = ["배송 관리"])
 class DeliveryController(
         private val deliveryService: DeliveryService

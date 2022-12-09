@@ -21,7 +21,7 @@ import javax.validation.Valid
 
 @RestController
 
-@RequestMapping("/order")
+@RequestMapping("/orders")
 @Api(tags = ["주문 관리"])
 class OrderController(
         private val orderService: OrderService

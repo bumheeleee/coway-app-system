@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 @Api(tags = ["카테고리 관리"])
 class CategoryController(
         private val categoryService: CategoryService

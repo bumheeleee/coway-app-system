@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/items")
 @Api(tags = ["상품 관리"])
 class ItemController(
         private val itemService: ItemService,
