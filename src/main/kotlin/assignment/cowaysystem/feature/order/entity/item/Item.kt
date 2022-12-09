@@ -1,5 +1,6 @@
 package assignment.cowaysystem.feature.order.entity.item
 
+import assignment.cowaysystem.common.annotation.AllOpen
 import assignment.cowaysystem.common.exception.NotEnoughStockException
 import assignment.cowaysystem.feature.order.entity.Category
 import com.fasterxml.jackson.annotation.JsonIgnore
@@ -8,6 +9,7 @@ import javax.persistence.*
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
+@AllOpen
 abstract class Item {
     @Id
     @GeneratedValue
