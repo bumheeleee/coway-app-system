@@ -1,5 +1,7 @@
 package assignment.cowaysystem.feature.order.controller
 
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
@@ -46,8 +48,8 @@ class TestController {
      * @RequestBody는 get방식이 바디를 갖을 수 있어서 받을 수 있는거임
      */
     @GetMapping("/test-get")
-    fun getFormTest(@RequestBody request: String): String{
-        return "get : $request"
+    fun getFormTest(@RequestParam("id") id: String): String{
+        return "get : $id"
     }
 
     /**
@@ -125,4 +127,15 @@ class TestController {
             return "ok"
         }
      */
+
+    /**
+     * ResponseEntity는 단순히 ResponseBody를 전달하는 것과 다르게 헤더 정보와 HTTP 상태 코드를 함께 가공하여 전달할 수 있다.
+     * 또한 Body에 응답을 위한 별도의 클래스를 제작하여 사용하면 정해진 규약에 따라 데이터를 전달할 수 있는 장점이 있다.
+     */
+    @PostMapping("/test-http")
+    fun getJsonResponseEntity(@RequestBody request: String): ResponseEntity<String> {
+        return ResponseEntity("ok", HttpStatus.CREATED)
+    }
+
+
 }
