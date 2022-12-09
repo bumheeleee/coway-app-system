@@ -31,7 +31,7 @@ class VisitService(
         if (orderItem.isPresent){
             val visit = Visit().createVisit(
                     address,
-                    visitServiceReq,
+                    visitServiceReq.visitTime,
                     orderItem.get()
             )
             visitRepository.save(visit)

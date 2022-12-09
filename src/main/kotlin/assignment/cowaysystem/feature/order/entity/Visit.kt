@@ -31,12 +31,12 @@ class Visit {
 
     fun createVisit(
             address: Address,
-            visitServiceReq: VisitServiceReq,
+            visitTime: LocalDateTime,
             orderItem: OrderItem
     ): Visit{
         val visit = Visit().also {
             it.address = address
-            it.visitTime = visitServiceReq.visitTime
+            it.visitTime = visitTime
         }
         visit.addOrderItem(orderItem)
         return visit
