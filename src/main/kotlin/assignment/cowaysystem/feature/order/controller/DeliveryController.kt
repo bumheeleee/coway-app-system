@@ -30,10 +30,10 @@ class DeliveryController(
     }
 
 
-    @GetMapping("/{loginId}")
-    @ApiOperation("배달이 완료된 상품 조회", notes = "특정 회원의 상품중 배달이 완료된 상품을 조회")
+    @GetMapping
+    @ApiOperation("특정 회원의 배달이 완료된 상품 조회", notes = "특정 회원의 상품중 배달이 완료된 상품을 조회")
     fun getDeliveryCompItem(
-            @PathVariable("loginId") loginId: String
+            @RequestParam("loginId") loginId: String
     ): Result<List<OrderItemRes>>{
         val data = deliveryService.findCompDeliveryItem(loginId).map {
             OrderItemRes(it)

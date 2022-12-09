@@ -37,19 +37,19 @@ class ItemController(
     }
 
     @ApiOperation("상품 검색", notes = "메인 페이지에서 상품검색(이름, 카테고리)")
-    @GetMapping("/{searchKeyword}")
+    @GetMapping
     fun searchItem(
-            @PathVariable("searchKeyword") searchKeyword: String
+            @RequestParam("searchKeyword") searchKeyword: String
     ): Page<SearchItemRes> {
         return itemService.search(searchKeyword).map {
             SearchItemRes(it)
         }
     }
 
-    @ApiOperation("인기상품 검색", notes = "인기상품에서 상품검색 (카테고리 이름을 통한 검색)")
-    @GetMapping("category/{categoryName}")
+    @ApiOperation("인기상품 검색 -> 카테고리를 통한 검색", notes = "인기상품에서 상품검색 (카테고리 이름을 통한 검색)")
+    @GetMapping("/category")
     fun searchItemByCategory(
-            @PathVariable("categoryName") categoryName: String
+            @RequestParam("categoryName") categoryName: String
     ): Page<SearchItemRes> {
         return itemService.searchCategory(categoryName).map {
             SearchItemRes(it)
