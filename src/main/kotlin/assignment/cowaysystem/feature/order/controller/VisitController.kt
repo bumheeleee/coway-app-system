@@ -4,6 +4,7 @@ import assignment.cowaysystem.common.util.throwIfHasErrors
 import assignment.cowaysystem.feature.order.controller.dto.OrderItemRes
 import assignment.cowaysystem.feature.order.controller.dto.VisitServiceReq
 import assignment.cowaysystem.feature.order.controller.dto.VisitServiceRes
+import assignment.cowaysystem.feature.order.controller.dto.Result
 import assignment.cowaysystem.feature.order.service.VisitService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -39,27 +40,30 @@ class VisitController(
     @ApiOperation("방문서비스 이용 내역 조회")
     fun getVisit(
             @PathVariable("visitId") visitId: Long
-    ): VisitServiceRes{
-        return VisitServiceRes(visitService.getVisit(visitId))
+    ): Result<VisitServiceRes>{
+        val data = VisitServiceRes(visitService.getVisit(visitId))
+        return Result(data)
     }
 
     @GetMapping("service/{loginId}")
     @ApiOperation("방문서비스 이용 상품검색", notes = "방문 서비스를 신청한 상품에 대한 상품검색")
     fun getUseServiceItem(
             @PathVariable("loginId") loginId: String,
-    ): List<OrderItemRes>{
-        return visitService.findItemsByUseService(loginId).map {
+    ): Result<List<OrderItemRes>>{
+        val data = visitService.findItemsByUseService(loginId).map {
             OrderItemRes(it)
         }
+        return Result(data)
     }
 
     @GetMapping("service/{loginId}/old")
     @ApiOperation("방문서비스 이용 상품중 3개월 지난 상품검색", notes = "방문 서비스를 신청한 상품중 3개월이 지난 상품검색")
     fun getOldItem(
             @PathVariable("loginId") loginId: String,
-    ): List<OrderItemRes>{
-        return visitService.findOldItemsByUseService(loginId).map {
+    ): Result<List<OrderItemRes>>{
+        val data = visitService.findOldItemsByUseService(loginId).map {
             OrderItemRes(it)
         }
+        return Result(data)
     }
 }

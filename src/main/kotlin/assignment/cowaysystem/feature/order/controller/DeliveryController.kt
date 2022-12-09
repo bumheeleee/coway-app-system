@@ -4,6 +4,7 @@ import assignment.cowaysystem.common.exception.BadRequestException
 import assignment.cowaysystem.feature.order.controller.dto.OrderItemRes
 import assignment.cowaysystem.feature.order.controller.dto.SaveItemReq
 import assignment.cowaysystem.feature.order.service.DeliveryService
+import assignment.cowaysystem.feature.order.controller.dto.Result
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
@@ -33,9 +34,10 @@ class DeliveryController(
     @ApiOperation("배달이 완료된 상품 조회", notes = "특정 회원의 상품중 배달이 완료된 상품을 조회")
     fun getDeliveryCompItem(
             @PathVariable("loginId") loginId: String
-    ): List<OrderItemRes>{
-        return deliveryService.findCompDeliveryItem(loginId).map {
+    ): Result<List<OrderItemRes>>{
+        val data = deliveryService.findCompDeliveryItem(loginId).map {
             OrderItemRes(it)
         }
+        return Result(data)
     }
 }

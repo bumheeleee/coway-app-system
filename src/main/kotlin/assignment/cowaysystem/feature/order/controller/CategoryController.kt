@@ -3,6 +3,7 @@ package assignment.cowaysystem.feature.order.controller
 import assignment.cowaysystem.common.util.throwIfHasErrors
 import assignment.cowaysystem.feature.order.controller.dto.CategoryNameRes
 import assignment.cowaysystem.feature.order.controller.dto.CategoryReq
+import assignment.cowaysystem.feature.order.controller.dto.Result
 import assignment.cowaysystem.feature.order.controller.dto.SearchItemRes
 import assignment.cowaysystem.feature.order.service.CategoryService
 import io.swagger.annotations.Api
@@ -44,9 +45,10 @@ class CategoryController(
      */
     @ApiOperation("모든 카테고리 종류 검색", notes = "모든 카테고리 종류 검색 API")
     @GetMapping
-    fun findItemByCategory(): List<CategoryNameRes>{
-        return categoryService.findAll().map {
+    fun findItemByCategory(): Result<List<CategoryNameRes>>{
+        val data = categoryService.findAll().map {
             CategoryNameRes(it)
         }
+        return Result(data)
     }
 }
