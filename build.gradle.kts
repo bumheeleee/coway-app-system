@@ -38,6 +38,9 @@ dependencies {
 		annotation("assignment.cowaysystem.common.annotation.AllOpen")
 	}
 
+	// https://mvnrepository.com/artifact/com.auth0/java-jwt
+	implementation("com.auth0:java-jwt:4.2.1")
+
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compileOnly("org.projectlombok:lombok")
