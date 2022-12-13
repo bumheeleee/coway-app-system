@@ -10,6 +10,15 @@
 <br/>
 
 
+# 🛠 사용 기술
+* Spring boot 2.7.5
+* Spring data jpa
+* Swagger 2.9.2
+* H2 
+* Kotlin
+<br/>
+
+
 
 
 # 👉 내가 만든 앱 소개
