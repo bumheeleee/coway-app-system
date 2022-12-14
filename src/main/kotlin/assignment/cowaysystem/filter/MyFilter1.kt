@@ -7,7 +7,7 @@ import javax.servlet.ServletResponse
 
 class MyFilter1 : Filter{
     override fun doFilter(request: ServletRequest?, response: ServletResponse?, chain: FilterChain?) {
-        println("filter1 통과하였습니다.")
+        println("filter1")
         chain?.doFilter(request, response)
     }
 }

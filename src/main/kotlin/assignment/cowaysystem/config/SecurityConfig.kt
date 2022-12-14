@@ -1,5 +1,6 @@
 package assignment.cowaysystem.config
 
+import assignment.cowaysystem.filter.MyFilter3
 import lombok.RequiredArgsConstructor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -27,6 +28,7 @@ class SecurityConfiguration(
      * http.addFilterBefore(MyFilter(), BasicAuthenticationFilter::class.java)
      */
     override fun configure(http: HttpSecurity) {
+        http.addFilterBefore(MyFilter3(), BasicAuthenticationFilter::class.java)
         http.csrf().disable()
         // 세션을 사용하지 않겠다.
         // form login 사용하지 않겠다.

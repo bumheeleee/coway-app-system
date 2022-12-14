@@ -16,6 +16,15 @@ import org.springframework.web.multipart.MultipartFile
 
 @RestController
 class TestController {
+    @GetMapping("/jwt")
+    fun jwtGetTest(): String{
+        return "jwt get test"
+    }
+
+    @PostMapping("/jwt")
+    fun jwtPostTest(): String{
+        return "jwt post test"
+    }
 
     /**
      * pathVariable 테스트
