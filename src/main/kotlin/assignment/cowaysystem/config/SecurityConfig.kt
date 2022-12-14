@@ -1,9 +1,11 @@
 package assignment.cowaysystem.config
 
+import assignment.cowaysystem.config.jwt.JwtAuthenticationFilter
 import assignment.cowaysystem.filter.MyFilter3
 import lombok.RequiredArgsConstructor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -15,7 +17,6 @@ import org.springframework.web.filter.CorsFilter
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 class SecurityConfiguration(
         private val corsFilter: CorsFilter
 ): WebSecurityConfigurerAdapter() {
@@ -37,6 +38,7 @@ class SecurityConfiguration(
                 .addFilter(corsFilter)   //모든 요청이 corsFilter를 타서 cors 정책으로부터 벗어날 수 있다.
                 .formLogin().disable()
                 .httpBasic().disable()
+                .addFilter(JwtAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
                 .antMatchers("/members/**")
                 .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
