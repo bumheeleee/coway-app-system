@@ -49,6 +49,7 @@ class SecurityConfiguration(
                 .anyRequest().permitAll()
     }
 
+    // password encoder
     @Bean
     fun passwordEncoder(): PasswordEncoder? {
         return BCryptPasswordEncoder()

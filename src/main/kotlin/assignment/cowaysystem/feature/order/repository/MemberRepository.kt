@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface MemberRepository: JpaRepository<Member, Long> {
     fun findByEmail(email: String): Member?
     fun findByLoginId(loginId: String): Member?
-    fun findByUsername(userName: String?): Member?
 }

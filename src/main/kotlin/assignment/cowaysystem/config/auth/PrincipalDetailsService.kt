@@ -13,9 +13,9 @@ class PrincipalDetailsService(
         private val memberRepository: MemberRepository
 ): UserDetailsService{
 
-    override fun loadUserByUsername(username: String?): UserDetails? {
+    override fun loadUserByUsername(loginId: String?): UserDetails? {
         println("loadUserByUsername의 실행")
-        val memberEntity = memberRepository.findByUsername(username)
+        val memberEntity = memberRepository.findByLoginId(loginId!!)
         return if (memberEntity != null) PrincipalDetails(memberEntity) else null
     }
 }
