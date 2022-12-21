@@ -40,12 +40,18 @@ class SecurityConfiguration(
                 .addFilter(JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(JwtAuthorizationFilter(authenticationManager(), memberRepository))
                 .authorizeRequests()
-                .antMatchers("/members/**")
-                .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+//                .antMatchers("/members/**")
+//                .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/managers/**")
                 .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/admins/**")
                 .access("hasRole('ROLE_ADMIN')")
+                .antMatchers(
+                        "/",
+                        "/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**",   // swagger
+                        "/h2-console/**",
+                        "/favicon.ico"
+                ).permitAll()
                 .anyRequest().permitAll()
     }
 
