@@ -26,6 +26,20 @@ class TestController {
         return "jwt post test"
     }
 
+    @GetMapping("/members")
+    fun members(): String{
+        return "into members"
+    }
+    @GetMapping("/managers")
+    fun managers(): String{
+        return "into managers"
+    }
+
+    @GetMapping("/admin")
+    fun admins(): String{
+        return "into admins"
+    }
+
     /**
      * pathVariable 테스트
      */
