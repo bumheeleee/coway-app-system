@@ -13,9 +13,9 @@ class PrincipalDetails(
         private val member: Member
 ): UserDetails{
     // 계정이 갖고있는 권한 목록을 return한다. (권한이 여러개면 loop를 돌아 확인)
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority?>? {
+    override fun getAuthorities(): MutableCollection<GrantedAuthority> {
         val authorities: MutableCollection<GrantedAuthority> = ArrayList()
-        authorities.add(GrantedAuthority { "ROLE" + member.authority })
+        authorities.add(GrantedAuthority {"ROLE_${member.getRole()}"})
         return authorities
     }
 
@@ -24,7 +24,7 @@ class PrincipalDetails(
     }
 
     override fun getUsername(): String {
-        return member.username!!
+        return member.loginId!!
     }
 
     // 계정이 만료되지 않았는지를 return한다 (true : 만료안됨)

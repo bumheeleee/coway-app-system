@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class FilterConfig {
-    @Bean
+    //@Bean
     fun filter1(): FilterRegistrationBean<MyFilter1>{
         val bean = FilterRegistrationBean(MyFilter1())
         bean.addUrlPatterns("/*")
@@ -16,7 +16,7 @@ class FilterConfig {
         return bean
     }
 
-    @Bean
+    //@Bean
     fun filter2(): FilterRegistrationBean<MyFilter2>{
         val bean = FilterRegistrationBean(MyFilter2())
         bean.addUrlPatterns("/*")

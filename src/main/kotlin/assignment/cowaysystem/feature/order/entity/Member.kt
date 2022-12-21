@@ -30,4 +30,8 @@ class Member: BaseTimeEntity() {
 
     @OneToMany(mappedBy = "member", cascade = [CascadeType.ALL])
     var orders: MutableList<Order> = mutableListOf()
+
+    fun getRole(): String?{
+        return authority?.name
+    }
 }

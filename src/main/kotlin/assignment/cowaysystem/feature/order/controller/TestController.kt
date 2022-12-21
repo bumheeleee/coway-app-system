@@ -35,7 +35,7 @@ class TestController {
         return "into managers"
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/admins")
     fun admins(): String{
         return "into admins"
     }

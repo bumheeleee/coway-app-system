@@ -1,24 +1,23 @@
 package assignment.cowaysystem.config
 
 import assignment.cowaysystem.config.jwt.JwtAuthenticationFilter
-import assignment.cowaysystem.filter.MyFilter3
-import lombok.RequiredArgsConstructor
+import assignment.cowaysystem.config.jwt.JwtAuthorizationFilter
+import assignment.cowaysystem.feature.order.repository.MemberRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
 import org.springframework.web.filter.CorsFilter
 
 @Configuration
 @EnableWebSecurity
 class SecurityConfiguration(
-        private val corsFilter: CorsFilter
+        private val corsFilter: CorsFilter,
+        private val memberRepository: MemberRepository
 ): WebSecurityConfigurerAdapter() {
     /**
      * jwt를 사용하기 위해
@@ -29,7 +28,7 @@ class SecurityConfiguration(
      * http.addFilterBefore(MyFilter(), BasicAuthenticationFilter::class.java)
      */
     override fun configure(http: HttpSecurity) {
-        http.addFilterBefore(MyFilter3(), BasicAuthenticationFilter::class.java)
+        //http.addFilterBefore(MyFilter3(), BasicAuthenticationFilter::class.java)
         http.csrf().disable()
         // 세션을 사용하지 않겠다.
         // form login 사용하지 않겠다.
@@ -39,6 +38,7 @@ class SecurityConfiguration(
                 .formLogin().disable()
                 .httpBasic().disable()
                 .addFilter(JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(JwtAuthorizationFilter(authenticationManager(), memberRepository))
                 .authorizeRequests()
                 .antMatchers("/members/**")
                 .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")

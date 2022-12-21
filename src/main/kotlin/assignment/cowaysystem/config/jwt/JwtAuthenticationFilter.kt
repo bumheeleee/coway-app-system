@@ -2,17 +2,22 @@ package assignment.cowaysystem.config.jwt
 
 import assignment.cowaysystem.config.auth.PrincipalDetails
 import assignment.cowaysystem.feature.order.entity.Member
+import com.auth0.jwt.JWT
+import com.auth0.jwt.algorithms.Algorithm
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import java.io.IOException
+import java.util.*
 import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+
 /**
+ * <인증>
  * 스프링 시큐리티에 UsernamePasswordAuthenticationFilter가 있음
  * /login 요청해서 username, password 전송하면 (post)
  * UsernamePasswordAuthenticationFilter 가 동작함
@@ -51,6 +56,7 @@ class JwtAuthenticationFilter(authenticationManager: AuthenticationManager?) : U
             // 굳이 jwt 토큰을 사용하면서 session을 사용할 필요는 없음
             return authentication
         }catch (e: IOException){
+            println("입출력 예외가 발생하였습니다.")
             e.printStackTrace()
         }
         return null
@@ -58,6 +64,17 @@ class JwtAuthenticationFilter(authenticationManager: AuthenticationManager?) : U
     // attemptAuthentication 실행 후 인증이 정상적으로 되었으면 successfulAuthentication 함수가 실행됨
     // jwt 토큰을 만들어서 요청한 클라이언트한데 jwt 토큰을 response 해줘야됨!
     override fun successfulAuthentication(request: HttpServletRequest?, response: HttpServletResponse?, chain: FilterChain?, authResult: Authentication?) {
-        super.successfulAuthentication(request, response, chain, authResult)
+        println("인증이 완료되었습니다.")
+        val principalDetails = authResult?.principal as PrincipalDetails
+
+        //HS256 방식
+        val jwtToken: String = JWT.create()
+                .withSubject("토큰A")
+                .withExpiresAt(Date(System.currentTimeMillis() + (60000 * 30)))
+                .withClaim("id", principalDetails.username)
+                .withClaim("password", principalDetails.password)
+                .sign(Algorithm.HMAC512("dlqjagml"))
+
+        response?.addHeader("Authorization", "Bearer $jwtToken")
     }
 }
