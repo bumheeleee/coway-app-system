@@ -14,7 +14,7 @@
 * Spring boot 2.7.5
 * Spring data jpa
 * Swagger 2.9.2
-* H2 
+* AWS RDS MYSQL 8.0.28
 * Kotlin
 <br/>
 
