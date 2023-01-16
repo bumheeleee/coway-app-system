@@ -42,18 +42,7 @@
 
 
 # 🙋‍♂️ API 문서
-|               REST API 목록               |
-| :---------------------------------:   |
-|<img src="https://user-images.githubusercontent.com/64251951/206706969-aa59672d-c421-4c62-b51d-41c06fb7f926.png" width="200" height="400"/>|
-
-
-
-|                                       |                                        |
-| :---------------------------------:   |    :-------------------------------:   |
-|<img src="https://user-images.githubusercontent.com/64251951/206707671-ede2cb16-d374-4488-9897-317756a166cc.png" width="400" height="300"/>|<img src="https://user-images.githubusercontent.com/64251951/206708033-060eba9e-e219-4d8a-9b06-0307ed6d33e6.png" width="400" height="300"/>
-|<img src="https://user-images.githubusercontent.com/64251951/206708098-bd398f74-1b29-4eaa-9379-23a3546d9154.png" width="400" height="300"/>|<img src="https://user-images.githubusercontent.com/64251951/206708151-0bdcfd39-b435-454c-86d6-0202842fd55d.png" width="400" height="300"/>
-|<img src="https://user-images.githubusercontent.com/64251951/206708209-cc7a244d-8bf4-4e7e-ba4e-13d9be31b2dd.png" width="400" height="300"/>|<img src="https://user-images.githubusercontent.com/64251951/206708254-b0117811-9248-4b3b-b197-cad67a9987b1.png" width="400" height="300"/>
------------------------
+* http://3.37.65.27:8080/swagger-ui.html
 
 
 
