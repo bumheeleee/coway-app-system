@@ -30,14 +30,13 @@ class MemberFormDto(
         val zipcode: String? = null
 ){
         fun toEntity(passwordEncoder: PasswordEncoder): Member {
+                val address = Address(city, street, zipcode)
                 return Member().also {
                         it.loginId = loginId
                         it.username = name
                         it.email = email
                         it.password = passwordEncoder.encode(password)
-                        it.address?.city = city
-                        it.address?.street = street
-                        it.address?.zipcode = zipcode
+                        it.address = address
                 }
         }
 }
