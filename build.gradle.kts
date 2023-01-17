@@ -29,6 +29,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation ("org.springframework.boot:spring-boot-starter-validation")
 
+	//메모리 db 설정
+	runtimeOnly ("com.h2database:h2")
+	implementation ("org.springframework.boot:spring-boot-starter-jdbc")
+
 	// swagger
 	implementation("io.springfox:springfox-swagger-ui:2.9.2")
 	implementation("io.springfox:springfox-swagger2:2.9.2")
