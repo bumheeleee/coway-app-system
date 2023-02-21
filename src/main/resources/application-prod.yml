@@ -1,15 +1,15 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://database-1.c8vyzmhshbnt.ap-northeast-2.rds.amazonaws.com:3306/coway?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://coway-rds-server.c8twdj6nhhfy.ap-northeast-2.rds.amazonaws.com:3306/coway?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Seoul
     username: admin
-    password: bumhee0607!
+    password: bumhee0607
   mvc:
     path match:
       matching-strategy: ant_path_matcher
   jpa:
     hibernate:
-    #ddl-auto: create
+      #ddl-auto: create
     properties:
       hibernate:
         show_sql: true

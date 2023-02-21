@@ -1,6 +1,5 @@
 package assignment.cowaysystem.feature.order.entity
 
-import assignment.cowaysystem.feature.order.controller.dto.VisitServiceReq
 import java.time.LocalDateTime
 import javax.persistence.*
 
