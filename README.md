@@ -27,7 +27,7 @@
 #### Deployed API Documentation
 
 ```
-http://3.37.65.27:8080/swagger-ui.html
+http://15.165.185.73:8080/swagger-ui.html
 ```
 
 #### Domain
